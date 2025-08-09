@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mona Alazzani | Full Stack Developer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #8e44ad;
+            /* main purple */
+            --primary-light: #a569bd;
+            /* lighter purple */
+            --primary-dark: #6c3483;
+            /* darker purple */
+
+            --dark: #121212;
+            --darker: #0a0a0a;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+            --dark-gray: #2a2a2a;
+            --section-padding: 6rem 0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        header {
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background-color: rgba(10, 10, 10, 0.9);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 1rem 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            transition: transform 0.3s;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 10rem 0 6rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(156, 39, 176, 0.1) 0%, rgba(10, 10, 10, 0) 70%);
+            z-index: -1;
+            animation: pulse 15s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            50% {
+                transform: translate(25%, 25%);
+            }
+
+            100% {
+                transform: translate(0, 0);
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, var(--primary), var(--primary-light));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h2 {
+            font-size: clamp(1.3rem, 3vw, 1.8rem);
+            color: var(--gray);
+            margin-bottom: 2rem;
+            font-weight: 400;
+            animation: fadeInUp 1s ease 0.2s forwards;
+            opacity: 0;
+        }
+
+        .hero p {
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            color: var(--gray);
+            animation: fadeInUp 1s ease 0.4s forwards;
+            opacity: 0;
+        }
+
+        .location {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            color: var(--gray);
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.6s forwards;
+            opacity: 0;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            animation: fadeInUp 1s ease 0.8s forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* About Section */
+        section {
+            padding: var(--section-padding);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        section.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 2.5rem);
+            margin-bottom: 3rem;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 0;
+            width: 50%;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 2px;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-top: 2rem;
+        }
+
+        .skill {
+            background-color: var(--dark-gray);
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .skill:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background-color: var(--darker);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(156, 39, 176, 0.3);
+            border-color: var(--primary);
+        }
+
+        .project-image {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .project-card:hover .project-image img {
+            transform: scale(1.05);
+        }
+
+        .project-info {
+            padding: 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+            transition: color 0.3s;
+        }
+
+        .project-card:hover .project-info h3 {
+            color: var(--primary-light);
+        }
+
+        .project-info p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: var(--light);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(156, 39, 176, 0.4);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            background-color: transparent;
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: var(--light);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(156, 39, 176, 0.4);
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background-color: var(--darker);
+            padding: 2.5rem 2rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(156, 39, 176, 0.2);
+            border-color: var(--primary);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover .service-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        /* Contact Section */
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            background-color: var(--darker);
+            padding: 1.5rem;
+            border-radius: 10px;
+            transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 20px rgba(156, 39, 176, 0.1);
+        }
+
+        .contact-icon {
+            font-size: 1.8rem;
+            color: var(--primary);
+            min-width: 40px;
+            text-align: center;
+        }
+
+        .contact-item a {
+            color: var(--light);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .contact-item a:hover {
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 0;
+            text-align: center;
+            color: var(--gray);
+            position: relative;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links a {
+            color: var(--light);
+            font-size: 1.5rem;
+            transition: all 0.3s;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--dark-gray);
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+            transform: translateY(-3px);
+            background-color: var(--primary-dark);
+        }
+
+        /* Floating CTA */
+        .floating-cta {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 999;
+        }
+
+        .floating-cta a {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background-color: var(--primary);
+            color: var(--light);
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            box-shadow: 0 5px 20px rgba(156, 39, 176, 0.5);
+            transition: all 0.3s;
+        }
+
+        .floating-cta a:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(156, 39, 176, 0.6);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            overflow-y: auto;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .modal-content {
+            background-color: var(--darker);
+            max-width: 900px;
+            margin: 2rem auto;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid var(--primary);
+            animation: slideUp 0.4s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 2rem;
+            color: var(--light);
+            cursor: pointer;
+            z-index: 1001;
+            transition: color 0.3s;
+            background-color: rgba(0, 0, 0, 0.5);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-modal:hover {
+            color: var(--primary);
+        }
+
+        .project-gallery {
+            padding: 1rem;
+        }
+
+        .feature-image {
+            width: 100%;
+            border-radius: 5px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-details {
+            padding: 2rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 70px);
+                background-color: var(--darker);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2rem;
+                transition: all 0.5s ease;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .hero {
+                padding: 8rem 0 4rem;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title::after {
+                width: 30%;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero h2 {
+                font-size: 1.2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .btn {
+                width: 100%;
+            }
+
+            .floating-cta {
+                bottom: 1rem;
+                right: 1rem;
+            }
+
+            .floating-cta a {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header id="header">
+        <div class="container">
+            <nav>
+                <div class="logo">Mona Alazzani</div>
+                <div class="nav-links" id="navLinks">
+                    <a href="#about">About</a>
+                    <a href="#projects">Projects</a>
+                    <a href="#services">Services</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Full Stack Developer</h1>
+            <h2>Building innovative mobile applications</h2>
+            <p>I specialize in creating robust, user-friendly mobile applications with clean code and modern technologies. With experience in both frontend and backend development, I deliver complete solutions from concept to deployment.</p>
+            <div class="location">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Riyadh, Saudi Arabia</span>
+            </div>
+            <div class="cta-buttons">
+                <a href="#contact" class="btn btn-primary">Hire Me</a>
+                <a href="#projects" class="btn btn-outline">View Work</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div>
+                    <p>I'm Mona Alazzani, a passionate Full Stack Developer with expertise in mobile application development. I thrive on turning ideas into functional, beautiful applications that solve real-world problems.</p>
+                    <p>With experience across the entire development stack, I bring a comprehensive approach to building applications. From designing intuitive user interfaces to implementing robust backend systems, I ensure seamless performance and excellent user experiences.</p>
+                </div>
+                <div>
+                    <h3>Skills & Technologies</h3>
+                    <div class="skills">
+                        <span class="skill">Flutter</span>
+                        <span class="skill">Dart</span>
+                        <span class="skill">Node.js</span>
+                        <span class="skill">JavaScript</span>
+                        <span class="skill">SQLite</span>
+                        <span class="skill">MySQL</span>
+                        <span class="skill">PostgreSQL</span>
+                        <span class="skill">Postman</span>
+                        <span class="skill">Socket.io</span>
+                        <span class="skill">API Integration</span>
+                        <span class="skill">Git</span>
+                        <span class="skill">GitHub</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <div class="container">
+            <h2 class="section-title">My Projects</h2>
+            <div class="projects-grid">
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="assets/images/1.png" alt="Ghost Kickout">
+                    </div>
+                    <div class="project-info">
+                        <h3>Ghost Kickout | Board Game</h3>
+                        <p>An innovative board game with a fresh concept, developed as a mobile application with engaging gameplay mechanics.</p>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-primary" onclick="openModal('modal1')">View Details</a>
+                            <a href="https://apps.apple.com/sa/app/ghost-kickout-board-game/id6737855371" class="btn btn-outline" target="_blank">App Store</a>
+                            <a href="https://play.google.com/store/apps/details?id=com.monaalazzani.trytostay&pcampaignid=web_share" class="btn btn-outline" target="_blank">Play Store</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="assets/images/2.png" alt="GoalSteps">
+                    </div>
+                    <div class="project-info">
+                        <h3>GoalSteps | Goal Tracker App</h3>
+                        <p>An upcoming application designed to help users track and achieve their personal and professional goals with intuitive progress monitoring.</p>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-primary" onclick="openModal('modal2')">View Details</a>
+                            <a href="#" class="btn btn-outline" onclick="comingSoon()">App Store</a>
+                            <a href="#" class="btn btn-outline" onclick="comingSoon()">Play Store</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3 -->
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="assets/images/3.png" alt="فضائل
+                        الأعمال">
+                    </div>
+                    <div class="project-info">
+                        <h3>فضائل الأعمال</h3>
+                        <p>A freelance platform application connecting users with service providers for various needs, featuring secure transactions and user reviews.</p>
+                        <div class="project-links">
+                            <a href="#" class="btn btn-primary" onclick="openModal('modal3')">View Details</a>
+                            <a href="https://apps.apple.com/sa/app/%D9%81%D8%B6%D8%A7%D8%A6%D9%84-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84/id6446866539" class="btn btn-outline" target="_blank">App Store</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <h2 class="section-title">My Services</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Mobile App Development</h3>
+                    <p>Custom mobile applications built with Flutter for both iOS and Android platforms, ensuring high performance and great user experience.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h3>Backend Development</h3>
+                    <p>Robust backend systems with Node.js, databases, and APIs to power your applications with secure and scalable architecture.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Full Stack Solutions</h3>
+                    <p>Complete development services from frontend to backend, delivering fully functional applications ready for deployment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fab fa-twitter"></i>
+                    </div>
+                    <a href="https://twitter.com/marrsazz" target="_blank">@marrsazz</a>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fab fa-linkedin-in"></i>
+                    </div>
+                    <a href="https://www.linkedin.com/in/mona-alazzani-57408b263?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank">LinkedIn Profile</a>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <a href="mailto:monaalazzani1@gmail.com">monaalazzani1@gmail.com</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+
+            <p>&copy; 2025 Mona Alazzani. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Floating CTA -->
+    <div class="floating-cta">
+        <a href="#contact">
+            <i class="fas fa-paper-plane"></i>
+            Let's Work Together
+        </a>
+    </div>
+
+    <!-- Project Modals -->
+    <!-- Modal 1 -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('modal1')">&times;</span>
+            <div class="project-gallery">
+                <img src="https://via.placeholder.com/800x500/6a0dad/ffffff?text=Ghost+Kickout+Feature+Graphic" alt="Ghost Kickout Feature Graphic" class="feature-image">
+            </div>
+            <div class="project-details">
+                <h3>Ghost Kickout | Board Game</h3>
+                <p>Ghost Kickout is an innovative board game application that introduces a fresh concept to mobile gaming. The game combines strategy and luck with unique gameplay mechanics that keep players engaged.</p>
+                <p>As the lead developer, I implemented the game logic, designed the user interface, and integrated multiplayer functionality using Socket.io for real-time gameplay. The app features in-app purchases, leaderboards, and social sharing capabilities.</p>
+                <div class="project-links">
+                    <a href="https://apps.apple.com/sa/app/ghost-kickout-board-game/id6737855371" class="btn btn-primary" target="_blank">App Store</a>
+                    <a href="https://play.google.com/store/apps/details?id=com.monaalazzani.trytostay&pcampaignid=web_share" class="btn btn-outline" target="_blank">Play Store</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2 -->
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('modal2')">&times;</span>
+            <div class="project-gallery">
+                <img src="https://via.placeholder.com/800x500/6a0dad/ffffff?text=GoalSteps+Feature+Graphic" alt="GoalSteps Feature Graphic" class="feature-image">
+            </div>
+            <div class="project-details">
+                <h3>GoalSteps | Goal Tracker App</h3>
+                <p>GoalSteps is an upcoming goal-tracking application designed to help users set, track, and achieve their personal and professional objectives. The app features progress visualization, reminders, and motivational tools.</p>
+                <p>I developed the application using Flutter for cross-platform compatibility and implemented a Node.js backend with MySQL for data storage. The app includes features like progress analytics, milestone celebrations, and social accountability.</p>
+                <div class="project-links">
+                    <a href="#" class="btn btn-primary" onclick="comingSoon()">App Store</a>
+                    <a href="#" class="btn btn-outline" onclick="comingSoon()">Play Store</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 3 -->
+    <div id="modal3" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal('modal3')">&times;</span>
+            <div class="project-gallery">
+                <img src="https://via.placeholder.com/800x500/6a0dad/ffffff?text=%D9%81%D8%B6%D8%A7%D8%A6%D9%84+%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84+Feature+Graphic" alt="فضائل الأعمال Feature Graphic" class="feature-image">
+            </div>
+            <div class="project-details">
+                <h3>فضائل الأعمال</h3>
+                <p>فضائل الأعمال is a freelance platform application that connects service providers with clients. The app features secure payment processing, user reviews, and a messaging system for seamless communication.</p>
+                <p>As the full-stack developer, I implemented the user authentication system, payment gateway integration, and real-time chat functionality. The backend was built with Node.js and MySQL, while the mobile app was developed with Flutter for both iOS and Android.</p>
+                <div class="project-links">
+                    <a href="https://apps.apple.com/sa/app/%D9%81%D8%B6%D8%A7%D8%A6%D9%84-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84/id6446866539" class="btn btn-primary" target="_blank">App Store</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            menuToggle.innerHTML = navLinks.classList.contains('active') ?
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+
+        // Close mobile menu when clicking a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', () => {
+            const header = document.getElementById('header');
+            header.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // Scroll animation
+        const sections = document.querySelectorAll('section');
+
+        function checkScroll() {
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+
+                if (sectionTop < windowHeight - 100) {
+                    section.classList.add('show');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', checkScroll);
+        window.addEventListener('load', checkScroll);
+
+        // Modal functionality
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Coming soon alert
+        function comingSoon() {
+            alert("Coming soon! This app will be available in the near future.");
+            return false;
+        }
+
+        // Close modal when clicking outside of it
+        window.onclick = function(event) {
+            if (event.target.className === 'modal') {
+                event.target.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
