@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mona Alazzani | Full Stack Developer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Devicon (technology logos) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+
     <style>
         :root {
             --primary: #8e44ad;
@@ -114,6 +117,85 @@
             cursor: pointer;
             font-size: 1.5rem;
         }
+/* Testimonials Section */
+#testimonials {
+    padding: 6rem 0;
+    background: radial-gradient(circle at top left, rgba(156, 39, 176, 0.05), rgba(10, 10, 10, 0.9));
+}
+
+#testimonials .section-title {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: clamp(2rem, 5vw, 2.5rem);
+    color: var(--primary);
+}
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+}
+
+.testimonial-card {
+    background-color: var(--darker);
+    padding: 1.5rem 1.5rem;
+    border-radius: 25px; /* more rounded */
+    border: 1px solid rgba(156, 39, 176, 0.3);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 30px rgba(156, 39, 176, 0.5);
+    border-color: var(--primary);
+}
+
+.testimonial-card p {
+    color: var(--light);
+    font-size: 0.9rem; /* slightly smaller */
+    margin-bottom: 1rem;
+    line-height: 1.4;
+}
+
+.testimonial-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.85rem;
+    color: var(--gray);
+}
+
+.testimonial-info .user-name {
+    font-weight: 600;
+    color: var(--light);
+}
+
+.testimonial-info .app-name {
+    font-weight: 500;
+    color: var(--primary);
+}
+
+.testimonial-info .stars {
+    color: #f1c40f;
+    margin-right: 0.3rem;
+}
+
+.testimonial-info .platform-icon {
+    font-size: 1rem;
+    color: var(--light);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .testimonials-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
 
         /* Hero Section */
         .hero {
@@ -291,7 +373,9 @@
 
         .project-image {
             height: 220px;
+            /* keeps default card height */
             overflow: hidden;
+            /* hides overflow (cropped parts) */
             position: relative;
         }
 
@@ -299,12 +383,19 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            /* fill container while keeping aspect ratio */
+            object-position: center;
+            /* center the image */
             transition: transform 0.5s;
+            display: block;
         }
 
         .project-card:hover .project-image img {
             transform: scale(1.05);
+            /* optional zoom on hover */
         }
+
+
 
         .project-info {
             padding: 1.5rem;
@@ -726,31 +817,46 @@
                     <p>With experience across the entire development stack, I bring a comprehensive approach to building applications. From designing intuitive user interfaces to implementing robust backend systems, I ensure seamless performance and excellent user experiences.</p>
                 </div>
                 <div>
-                    <h3>Skills & Technologies</h3>
+                     <h2 class="section-title">Skills & Technologies</h2>
                     <div class="skills">
-                        <span class="skill">Flutter</span>
-                        <span class="skill">Dart</span>
-                        <span class="skill">Node.js</span>
-                        <span class="skill">JavaScript</span>
-                        <span class="skill">SQLite</span>
-                        <span class="skill">MySQL</span>
-                        <span class="skill">PostgreSQL</span>
-                        <span class="skill">Postman</span>
-                        <span class="skill">Socket.io</span>
-                        <span class="skill">API Integration</span>
-                        <span class="skill">Git</span>
-                        <span class="skill">GitHub</span>
+
+                        <!-- Mobile Development -->
+                        <span class="skill"><i class="devicon-flutter-plain colored"></i> Flutter</span>
+                        <span class="skill"><i class="devicon-dart-plain colored"></i> Dart</span>
+                        <span class="skill"><i class="devicon-kotlin-plain colored"></i> Kotlin</span>
+                        <span class="skill"><i class="devicon-jetpackcompose-plain colored"></i> Jetpack Compose</span>
+
+                        <!-- Backend Development -->
+                        <span class="skill"><i class="devicon-nodejs-plain colored"></i> Node.js</span>
+                        <span class="skill"><i class="devicon-javascript-plain colored"></i> JavaScript</span>
+                        <span class="skill"><i class="devicon-socketio-original"></i> Socket.io</span>
+                        <span class="skill"><i class="devicon-redis-plain colored"></i> Redis</span>
+
+                        <!-- Databases -->
+                        <span class="skill"><i class="devicon-sqlite-plain colored"></i> SQLite</span>
+                        <span class="skill"><i class="devicon-mysql-plain colored"></i> MySQL</span>
+                        <span class="skill"><i class="devicon-postgresql-plain colored"></i> PostgreSQL</span>
+
+                        <!-- Tools & Services -->
+                        <span class="skill"><i class="fas fa-plug"></i> API Integration</span>
+                        <span class="skill"><i class="devicon-postman-plain colored"></i> Postman</span>
+                        <span class="skill"><i class="devicon-git-plain colored"></i> Git</span>
+                        <span class="skill"><i class="devicon-github-original colored"></i> GitHub</span>
+                        <span class="skill"><i class="devicon-firebase-plain colored"></i> Firebase Services</span>
+                        <span class="skill"><i class="fas fa-crown"></i> RevenueCat</span>
+
                     </div>
+
                 </div>
             </div>
         </div>
     </section>
-
     <!-- Projects Section -->
     <section id="projects">
         <div class="container">
             <h2 class="section-title">My Projects</h2>
             <div class="projects-grid">
+
                 <!-- Project 1 -->
                 <div class="project-card">
                     <div class="project-image">
@@ -758,9 +864,14 @@
                     </div>
                     <div class="project-info">
                         <h3>Ghost Kickout | Board Game</h3>
-                        <p>An innovative board game with a fresh concept, developed as a mobile application with engaging gameplay mechanics.</p>
+                        <p>
+                            Ghost Kickout is a fun and engaging multiplayer board game mobile app, where players compete as ghosts
+                            to collect points and strategically eliminate opponents. Developed with complex gameplay mechanics,
+                            real-time multiplayer functionality, in-game chat, leaderboards, power-ups, and player customization,
+                            demonstrating strong full-stack development skills.
+                        </p>
+                        <p><strong>Tools Used:</strong> Flutter, Dart, Node.js, JavaScript, MySQL, SQLite, Socket.io, Firebase Messaging, Redis</p>
                         <div class="project-links">
-                            <a href="#" class="btn btn-primary" onclick="openModal('modal1')">View Details</a>
                             <a href="https://apps.apple.com/sa/app/ghost-kickout-board-game/id6737855371" class="btn btn-outline" target="_blank">App Store</a>
                             <a href="https://play.google.com/store/apps/details?id=com.monaalazzani.trytostay&pcampaignid=web_share" class="btn btn-outline" target="_blank">Play Store</a>
                         </div>
@@ -774,9 +885,12 @@
                     </div>
                     <div class="project-info">
                         <h3>GoalSteps | Goal Tracker App</h3>
-                        <p>An upcoming application designed to help users track and achieve their personal and professional goals with intuitive progress monitoring.</p>
+                        <p>
+                            An app for managing, tracking, visualizing, and analyzing personal and professional goals,
+                            providing clear insights and progress monitoring to help users achieve their objectives efficiently.
+                        </p>
+                        <p><strong>Tools Used:</strong> Flutter, Dart, SQLite, RevenueCat</p>
                         <div class="project-links">
-                            <a href="#" class="btn btn-primary" onclick="openModal('modal2')">View Details</a>
                             <a href="#" class="btn btn-outline" onclick="comingSoon()">App Store</a>
                             <a href="#" class="btn btn-outline" onclick="comingSoon()">Play Store</a>
                         </div>
@@ -786,21 +900,90 @@
                 <!-- Project 3 -->
                 <div class="project-card">
                     <div class="project-image">
-                        <img src="assets/images/3.png" alt="فضائل
-                        الأعمال">
+                        <img src="assets/images/3.png" alt="فضائل الأعمال">
                     </div>
                     <div class="project-info">
-                        <h3>فضائل الأعمال</h3>
-                        <p>A freelance platform application connecting users with service providers for various needs, featuring secure transactions and user reviews.</p>
+                        <h3>تطبيق فضائل الأعمال</h3>
+                        <p>
+                            An Islamic app I developed as a freelance project for a client,
+                            focusing on showcasing the virtues of good deeds such as charity, remembrance of Allah, and piety,
+                            all gathered in one simple and easy-to-use platform.
+                        </p>
+                        <p><strong>Tools Used:</strong> Flutter, Dart</p>
                         <div class="project-links">
-                            <a href="#" class="btn btn-primary" onclick="openModal('modal3')">View Details</a>
                             <a href="https://apps.apple.com/sa/app/%D9%81%D8%B6%D8%A7%D8%A6%D9%84-%D8%A7%D9%84%D8%A3%D8%B9%D9%85%D8%A7%D9%84/id6446866539" class="btn btn-outline" target="_blank">App Store</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- Testimonials Section -->
+    <section id="testimonials">
+        <div class="container">
+            <h2 class="section-title">What Users Say</h2>
+            <div class="testimonials-grid">
+
+                <!-- Testimonial 1 (App Store) -->
+                <div class="testimonial-card">
+                    <p>"من أجمل الألعاب يلي لعبتها ومصممه اللعبه فنانه بالحرف الواحد🥰😘"</p>
+                    <div class="testimonial-info">
+                        <div>
+                            <span class="user-name">فانز اليان حقي ولين ولانا محمد</span> -
+                            <span class="app-name">Ghost Kickout</span>
+                        </div>
+                        <div>
+                            <span class="stars">⭐️⭐️⭐️⭐️⭐️</span>
+                            <i class="fab fa-apple platform-icon"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Best game ever i love it sm I’m obsessed with itt!!!"</p>
+                    <div class="testimonial-info">
+                        <div>
+                            <span class="user-name">Hawraa ali best girl ever</span> -
+                            <span class="app-name">Ghost Kickout</span>
+                        </div>
+                        <div>
+                            <span class="stars">⭐️⭐️⭐️⭐️⭐️</span>
+                            <i class="fab fa-apple platform-icon"></i>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 2 (Play Store) -->
+               
+                <div class="testimonial-card">
+                    <p>"Excellent game.. enjoyed it"</p>
+                    <div class="testimonial-info">
+                        <div>
+                            <span class="user-name">Khalifa Yousef</span> -
+                            <span class="app-name">Ghost Kickout</span>
+                        </div>
+                        <div>
+                            <span class="stars">⭐️⭐️⭐️⭐️⭐️</span>
+                            <i class="fab fa-android platform-icon"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"The game is really great! I played it with my friends and we loved it a lot."</p>
+                    <div class="testimonial-info">
+                        <div>
+                            <span class="user-name">Razan</span> -
+                            <span class="app-name">Ghost Kickout</span>
+                        </div>
+                        <div>
+                            <span class="stars">⭐️⭐️⭐️⭐️⭐️</span>
+                            <i class="fab fa-android platform-icon"></i>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+
 
     <!-- Services Section -->
     <section id="services">
