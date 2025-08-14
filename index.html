@@ -117,84 +117,87 @@
             cursor: pointer;
             font-size: 1.5rem;
         }
-/* Testimonials Section */
-#testimonials {
-    padding: 6rem 0;
-    background: radial-gradient(circle at top left, rgba(156, 39, 176, 0.05), rgba(10, 10, 10, 0.9));
-}
 
-#testimonials .section-title {
-    text-align: center;
-    margin-bottom: 3rem;
-    font-size: clamp(2rem, 5vw, 2.5rem);
-    color: var(--primary);
-}
+        /* Testimonials Section */
+        #testimonials {
+            padding: 6rem 0;
+            background: radial-gradient(circle at top left, rgba(156, 39, 176, 0.05), rgba(10, 10, 10, 0.9));
+        }
 
-.testimonials-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1.5rem;
-}
+        #testimonials .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: clamp(2rem, 5vw, 2.5rem);
+            color: var(--primary);
+        }
 
-.testimonial-card {
-    background-color: var(--darker);
-    padding: 1.5rem 1.5rem;
-    border-radius: 25px; /* more rounded */
-    border: 1px solid rgba(156, 39, 176, 0.3);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
-    transition: all 0.3s;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
 
-.testimonial-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 30px rgba(156, 39, 176, 0.5);
-    border-color: var(--primary);
-}
+        .testimonial-card {
+            background-color: var(--darker);
+            padding: 1.5rem 1.5rem;
+            border-radius: 25px;
+            /* more rounded */
+            border: 1px solid rgba(156, 39, 176, 0.3);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
 
-.testimonial-card p {
-    color: var(--light);
-    font-size: 0.9rem; /* slightly smaller */
-    margin-bottom: 1rem;
-    line-height: 1.4;
-}
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(156, 39, 176, 0.5);
+            border-color: var(--primary);
+        }
 
-.testimonial-info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 0.85rem;
-    color: var(--gray);
-}
+        .testimonial-card p {
+            color: var(--light);
+            font-size: 0.9rem;
+            /* slightly smaller */
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
 
-.testimonial-info .user-name {
-    font-weight: 600;
-    color: var(--light);
-}
+        .testimonial-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            color: var(--gray);
+        }
 
-.testimonial-info .app-name {
-    font-weight: 500;
-    color: var(--primary);
-}
+        .testimonial-info .user-name {
+            font-weight: 600;
+            color: var(--light);
+        }
 
-.testimonial-info .stars {
-    color: #f1c40f;
-    margin-right: 0.3rem;
-}
+        .testimonial-info .app-name {
+            font-weight: 500;
+            color: var(--primary);
+        }
 
-.testimonial-info .platform-icon {
-    font-size: 1rem;
-    color: var(--light);
-}
+        .testimonial-info .stars {
+            color: #f1c40f;
+            margin-right: 0.3rem;
+        }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-    .testimonials-grid {
-        grid-template-columns: 1fr;
-    }
-}
+        .testimonial-info .platform-icon {
+            font-size: 1rem;
+            color: var(--light);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .testimonials-grid {
+                grid-template-columns: 1fr;
+            }
+        }
 
 
         /* Hero Section */
@@ -337,11 +340,14 @@
         }
 
         .skill {
-            background-color: var(--dark-gray);
+            background-color: var(--darker);
             padding: 0.5rem 1.2rem;
             border-radius: 20px;
             font-size: 0.9rem;
+            overflow: hidden;
             transition: all 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
 
         .skill:hover {
@@ -358,7 +364,7 @@
 
         .project-card {
             background-color: var(--darker);
-            border-radius: 10px;
+            border-radius: 20px;
             overflow: hidden;
             transition: all 0.3s;
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -372,27 +378,20 @@
         }
 
         .project-image {
-            height: 220px;
-            /* keeps default card height */
+            width: 100%;
             overflow: hidden;
-            /* hides overflow (cropped parts) */
             position: relative;
+            /* height removed to auto fit image */
         }
 
         .project-image img {
             width: 100%;
-            height: 100%;
+            height: auto;
+            /* auto height to maintain aspect ratio */
             object-fit: cover;
-            /* fill container while keeping aspect ratio */
-            object-position: center;
-            /* center the image */
-            transition: transform 0.5s;
+            /* keeps aspect ratio */
             display: block;
-        }
-
-        .project-card:hover .project-image img {
-            transform: scale(1.05);
-            /* optional zoom on hover */
+            transition: transform 0.5s;
         }
 
 
@@ -409,9 +408,21 @@
             transition: color 0.3s;
         }
 
-        .project-card:hover .project-info h3 {
-            color: var(--primary-light);
+        .project-card {
+            border-radius: 20px;
+            /* makes corners more rounded */
+            overflow: hidden;
+            /* ensures child elements like images respect the rounded corners */
+            background-color: var(--darker);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s;
+            height: 100%;
         }
+
 
         .project-info p {
             color: var(--gray);
@@ -421,7 +432,12 @@
 
         .project-links {
             display: flex;
+            justify-content: center;
+            /* centers buttons horizontally */
             gap: 0.8rem;
+            /* space between buttons */
+            flex-wrap: wrap;
+            /* optional: wrap buttons on smaller screens */
         }
 
         .btn {
@@ -471,7 +487,7 @@
         .service-card {
             background-color: var(--darker);
             padding: 2.5rem 2rem;
-            border-radius: 10px;
+            border-radius: 20px;
             text-align: center;
             border: 1px solid rgba(255, 255, 255, 0.1);
             transition: all 0.3s;
@@ -519,7 +535,7 @@
             gap: 1.2rem;
             background-color: var(--darker);
             padding: 1.5rem;
-            border-radius: 10px;
+            border-radius: 20px;
             transition: all 0.3s;
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
@@ -638,7 +654,7 @@
             background-color: var(--darker);
             max-width: 900px;
             margin: 2rem auto;
-            border-radius: 10px;
+            border-radius: 20px;
             overflow: hidden;
             position: relative;
             border: 1px solid var(--primary);
@@ -806,51 +822,54 @@
             </div>
         </div>
     </section>
-
-    <!-- About Section -->
+    <!-- About Me Section -->
     <section id="about">
         <div class="container">
             <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div>
-                    <p>I'm Mona Alazzani, a passionate Full Stack Developer with expertise in mobile application development. I thrive on turning ideas into functional, beautiful applications that solve real-world problems.</p>
-                    <p>With experience across the entire development stack, I bring a comprehensive approach to building applications. From designing intuitive user interfaces to implementing robust backend systems, I ensure seamless performance and excellent user experiences.</p>
-                </div>
-                <div>
-                     <h2 class="section-title">Skills & Technologies</h2>
-                    <div class="skills">
-
-                        <!-- Mobile Development -->
-                        <span class="skill"><i class="devicon-flutter-plain colored"></i> Flutter</span>
-                        <span class="skill"><i class="devicon-dart-plain colored"></i> Dart</span>
-                        <span class="skill"><i class="devicon-kotlin-plain colored"></i> Kotlin</span>
-                        <span class="skill"><i class="devicon-jetpackcompose-plain colored"></i> Jetpack Compose</span>
-
-                        <!-- Backend Development -->
-                        <span class="skill"><i class="devicon-nodejs-plain colored"></i> Node.js</span>
-                        <span class="skill"><i class="devicon-javascript-plain colored"></i> JavaScript</span>
-                        <span class="skill"><i class="devicon-socketio-original"></i> Socket.io</span>
-                        <span class="skill"><i class="devicon-redis-plain colored"></i> Redis</span>
-
-                        <!-- Databases -->
-                        <span class="skill"><i class="devicon-sqlite-plain colored"></i> SQLite</span>
-                        <span class="skill"><i class="devicon-mysql-plain colored"></i> MySQL</span>
-                        <span class="skill"><i class="devicon-postgresql-plain colored"></i> PostgreSQL</span>
-
-                        <!-- Tools & Services -->
-                        <span class="skill"><i class="fas fa-plug"></i> API Integration</span>
-                        <span class="skill"><i class="devicon-postman-plain colored"></i> Postman</span>
-                        <span class="skill"><i class="devicon-git-plain colored"></i> Git</span>
-                        <span class="skill"><i class="devicon-github-original colored"></i> GitHub</span>
-                        <span class="skill"><i class="devicon-firebase-plain colored"></i> Firebase Services</span>
-                        <span class="skill"><i class="fas fa-crown"></i> RevenueCat</span>
-
-                    </div>
-
-                </div>
+            <div class="about-text">
+                <p>I'm Mona Alazzani, a passionate Full Stack Developer specializing in mobile application development. I transform ideas into functional and visually appealing applications that solve real-world problems.</p>
+                <p>With experience across both frontend and backend development, I deliver end-to-end solutions. From designing intuitive user interfaces to implementing robust backend systems, I ensure seamless performance and excellent user experiences.</p>
             </div>
         </div>
     </section>
+
+    <!-- Skills & Technologies Section -->
+    <section id="skills">
+        <div class="container">
+            <h2 class="section-title">Skills & Technologies</h2>
+            <div class="skills">
+                <!-- Mobile Development -->
+                <span class="skill"><i class="devicon-flutter-plain colored"></i> Flutter</span>
+                <span class="skill"><i class="devicon-dart-plain colored"></i> Dart</span>
+                <span class="skill"><i class="devicon-kotlin-plain colored"></i> Kotlin</span>
+                <span class="skill"><i class="devicon-jetpackcompose-plain colored"></i> Jetpack Compose</span>
+
+                <!-- Backend Development -->
+                <span class="skill"><i class="devicon-nodejs-plain colored"></i> Node.js</span>
+                <span class="skill"><i class="devicon-javascript-plain colored"></i> JavaScript</span>
+                <span class="skill"><i class="devicon-socketio-original"></i> Socket.io</span>
+                <span class="skill"><i class="devicon-redis-plain colored"></i> Redis</span>
+
+                <!-- Databases -->
+                <span class="skill"><i class="devicon-sqlite-plain colored"></i> SQLite</span>
+                <span class="skill"><i class="devicon-mysql-plain colored"></i> MySQL</span>
+                <span class="skill"><i class="devicon-postgresql-plain colored"></i> PostgreSQL</span>
+
+                <!-- Tools & Services -->
+                <span class="skill"><i class="fas fa-plug"></i> API Integration</span>
+                <span class="skill"><i class="devicon-postman-plain colored"></i> Postman</span>
+                <span class="skill"><i class="devicon-git-plain colored"></i> Git</span>
+                <span class="skill"><i class="devicon-github-original colored"></i> GitHub</span>
+                <span class="skill"><i class="devicon-firebase-plain colored"></i> Firebase Services</span>
+                <span class="skill"><i class="fas fa-crown"></i> RevenueCat</span>
+                <!-- Publishing Apps -->
+                <span class="skill"><i class="fab fa-apple"></i> iOS App Deployment</span>
+                <span class="skill"><i class="fab fa-android"></i> Android App Deployment</span>
+
+            </div>
+        </div>
+    </section>
+
     <!-- Projects Section -->
     <section id="projects">
         <div class="container">
@@ -953,7 +972,7 @@
                     </div>
                 </div>
                 <!-- Testimonial 2 (Play Store) -->
-               
+
                 <div class="testimonial-card">
                     <p>"Excellent game.. enjoyed it"</p>
                     <div class="testimonial-info">
