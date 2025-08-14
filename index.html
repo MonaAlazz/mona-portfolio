@@ -11,11 +11,11 @@
 
     <style>
         :root {
-            --primary: #8e44ad;
-            /* main purple */
-            --primary-light: #a569bd;
+            --primary: #9b59b6;
+            /* main purple - slightly brighter and softer */
+            --primary-light: #b085d1;
             /* lighter purple */
-            --primary-dark: #6c3483;
+            --primary-dark: #7d3c98;
             /* darker purple */
 
             --dark: #121212;
@@ -25,6 +25,7 @@
             --dark-gray: #2a2a2a;
             --section-padding: 6rem 0;
         }
+
 
         * {
             margin: 0;
@@ -290,6 +291,50 @@
                 opacity: 1;
                 transform: translateY(0);
             }
+        }
+
+        /* Availability Section */
+        #availability {
+            padding: var(--section-padding);
+            background-color: var(--dark);
+        }
+
+        .availability-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .availability-card {
+            background-color: var(--darker);
+            padding: 1.5rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .availability-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+            box-shadow: 0 15px 30px rgba(156, 39, 176, 0.3);
+        }
+
+        .availability-card i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+        }
+
+        .availability-card h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .availability-card p {
+            color: var(--gray);
+            font-size: 0.95rem;
         }
 
         /* About Section */
@@ -822,7 +867,7 @@
                 <div class="logo">Mona Alazzani</div>
                 <div class="nav-links" id="navLinks">
                     <a href="#about">About</a>
-                    <a href="#projects">Projects</a>
+                    <a href="#projects">Apps</a>
                     <a href="#services">Services</a>
                     <a href="#contact">Contact</a>
                 </div>
@@ -854,8 +899,8 @@
         <div class="container">
             <h2 class="section-title">About Me</h2>
             <div class="about-text">
-                <p>I'm Mona Alazzani, a passionate Full Stack Developer specializing in mobile application development. I transform ideas into functional and visually appealing applications that solve real-world problems.</p>
-                <p>With experience across both frontend and backend development, I deliver end-to-end solutions. From designing intuitive user interfaces to implementing robust backend systems, I ensure seamless performance and excellent user experiences.</p>
+                <p>I'm Mona Alazzani, a passionate Full Stack Developer specializing in mobile application development. I have successfully worked on <strong>7 projects</strong>, launching <strong>3 apps</strong> on the App Store and Google Play, reaching hundreds of users and receiving excellent feedback. I create functional and visually appealing applications that solve real-world problems and provide smooth, engaging user experiences.</p>
+
             </div>
         </div>
     </section>
@@ -863,7 +908,7 @@
     <!-- Skills & Technologies Section -->
     <section id="skills">
         <div class="container">
-            <h2 class="section-title">Skills & Technologies</h2>
+            <h2 class="section-title">Skills & Expertise</h2>
             <div class="skills">
                 <!-- Mobile Development -->
                 <span class="skill"><i class="devicon-flutter-plain colored"></i> Flutter</span>
@@ -900,7 +945,7 @@
     <!-- Projects Section -->
     <section id="projects">
         <div class="container">
-            <h2 class="section-title">My Projects</h2>
+            <h2 class="section-title">Apps & Games</h2>
             <div class="projects-grid">
 
                 <!-- Project 1 -->
@@ -965,10 +1010,38 @@
             </div>
         </div>
     </section>
+    <!-- Availability Section -->
+    <section id="availability">
+        <div class="container">
+            <h2 class="section-title">Work Availability</h2>
+            <div class="availability-cards">
+
+                <div class="availability-card">
+                    <i class="fas fa-briefcase"></i>
+                    <h3>Freelance Projects</h3>
+                    <p>Open to short-term or long-term freelance opportunities, delivering high-quality mobile and web applications.</p>
+                </div>
+
+                <div class="availability-card">
+                    <i class="fas fa-laptop-code"></i>
+                    <h3>Remote Work</h3>
+                    <p>Available for fully remote positions where I can contribute as a full-stack developer to your team.</p>
+                </div>
+
+                <div class="availability-card">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Contract Work</h3>
+                    <p>Open to contract-based collaborations for mobile app development or full-stack projects.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <!-- Testimonials Section -->
     <section id="testimonials">
         <div class="container">
-            <h2 class="section-title">What Users Say</h2>
+            <h2 class="section-title">Testimonials</h2>
             <div class="testimonials-grid">
 
                 <!-- Testimonial 1 (App Store) -->
@@ -1030,11 +1103,10 @@
         </div>
     </section>
 
-
     <!-- Services Section -->
     <section id="services">
         <div class="container">
-            <h2 class="section-title">My Services</h2>
+            <h2 class="section-title">Services</h2>
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">
@@ -1057,9 +1129,18 @@
                     <h3>Full Stack Solutions</h3>
                     <p>Complete development services from frontend to backend, delivering fully functional applications ready for deployment.</p>
                 </div>
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-edit"></i>
+                    </div>
+                    <h3>App Enhancement</h3>
+                    <p>Improve existing Flutter apps by adding new features, optimizing performance, fixing bugs, and keeping them up-to-date for the best user experience.</p>
+                </div>
+
             </div>
         </div>
     </section>
+
 
     <!-- Contact Section -->
     <section id="contact">
